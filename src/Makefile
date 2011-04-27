@@ -1,2 +1,2 @@
 all:
-	ghc --make src/Main
+	ghc --make Main

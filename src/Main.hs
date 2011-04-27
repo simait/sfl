@@ -5,6 +5,8 @@ import System
 import System.Exit
 import Language.Haskell.Pretty
 
+import Parse
+
 -- Check a filename, .sfl is the only valid extension, pointless right now but...
 checkFileName f = do
 	let nameOk = isSuffixOf ".sfl"
