@@ -34,6 +34,8 @@ main = do
 	-- Parse all files...
 	parsed <- mapM parseFile files
 	
+	mapM print parsed
+	
 	-- ...and for now just pretty print them.
 	let pps = map prettyPrint parsed
 	mapM putStrLn pps
