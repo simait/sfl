@@ -17,3 +17,6 @@ parseFile f = do
 		ParseOk tree -> return ()
 	let (ParseOk tree) = result
 	return tree
+
+moduleName (HsModule _ (Module name) _ _ _) = name
+moduleDecls (HsModule _ _ _ _ decls) = decls

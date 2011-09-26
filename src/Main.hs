@@ -5,7 +5,9 @@ import System
 import System.Exit
 import Language.Haskell.Pretty
 
+import Core
 import Parse
+import Syntax2Core
 
 -- Check a filename, .sfl is the only valid extension, pointless right now but...
 checkFileName f = do
@@ -21,10 +23,14 @@ main = do
 	-- Parse all files...
 	parsed <- mapM parseFile files
 
-	mapM print parsed
+	mapM print (concat $ map Parse.moduleDecls parsed)
 
-	-- ...and for now just pretty print them.
-	let pps = map prettyPrint parsed
+	mapM print $ concat $ map (Core.moduleDecls . translateModule) parsed
+
+	--putStrLn $ show $ map (Core.moduleDecls . translateModule) parsed
+
+	-- ...and for now just pretty print any declarations them.
+	let pps = map prettyPrint (concat $ map Parse.moduleDecls parsed)
 	mapM putStrLn pps
 
 	-- Well success is a strong word ;)
