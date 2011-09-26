@@ -36,7 +36,7 @@ translateExpr expr = error ("Unknown expression: " ++ (show expr))
 
 -- -----------------------------------------------------------------------------
 
-translateAlt
+--translateAlt
 translateAlt alt = error ("Alt translation not yet implemented: " ++ (show alt))
 
 -- -----------------------------------------------------------------------------
