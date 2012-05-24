@@ -30,8 +30,8 @@ main = do
 	--putStrLn $ show $ map (Core.moduleDecls . translateModule) parsed
 
 	-- ...and for now just pretty print any declarations them.
-	let pps = map prettyPrint (concat $ map Parse.moduleDecls parsed)
-	mapM putStrLn pps
+	--let pps = map prettyPrint (concat $ map Parse.moduleDecls parsed)
+	--mapM putStrLn pps
 
 	-- Well success is a strong word ;)
 	exitSuccess

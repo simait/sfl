@@ -9,15 +9,18 @@ mkPNames n = take n pSupply
 data Name = Name String
 	deriving (Show)
 
-mkName str = Name str
+mkName s = Name s
+name (Name s) = s
 
 data Type = Unknown
 	deriving (Show)
 
-data Literal = LInt Integer
+data Lit =
+	LInt Integer   |
+	LChar Char     |
+	LString String
 	deriving (Show)
 
--- The Module data type, contains all the information regarding a single Module.
 data Module = Module Name [Decl]
 	deriving (Show)
 
@@ -32,15 +35,14 @@ data Alt = Alt Pat Expr
 aTrue expr = Alt (PCon (mkName "True") []) expr
 aFalse expr = Alt (PCon (mkName "False") []) expr
 
--- Pattern data type, for all the nifty matching.
 data Pat =
-	PLit |
-	PCon Name [Expr]
+	PLit Lit|
+	PVar Name |
+	PCon Name [Pat]
 	deriving (Show)
 
--- The Expr data type, is the foundation of our language.
 data Expr =
-	ELit  Literal |
+	ELit  Lit |
 	EVar  Name |
 	ECon  Name [Expr] |
 	EApp  Expr Expr |
@@ -49,3 +51,6 @@ data Expr =
 	EList [Expr] |
 	ECase Expr [Alt]
 	deriving (Show)
+
+data Match =
+	Fatbar 

@@ -1,6 +1,6 @@
 module Test where
 
-x0 = [1, 2, 3, 4]
+{-x0 = [1, 2, 3, 4]
 
 x1 = [1..10]
 
@@ -14,3 +14,10 @@ z = 3 + 4
 m = case 4 == 3 of
 	True -> False
 	False -> True
+
+n = if True then False else True-}
+
+test n = n
+zip [] bs = []
+zip (a:as) [] = []
+zip (a:as) (b:bs) = (a,b):zip as bs
