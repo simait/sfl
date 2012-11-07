@@ -95,7 +95,6 @@ match (x:xs) (m@(HsMatch _ _ (p:ps) rhs []):ms) err
 	 subst (HsPVar (HsIdent i)) (EVar (Name n)) ms = subst' i n ms
 	 subst' _ _ [] = []
 	 subst' x v (HsMatch l n ps (HsUnGuardedRhs rhs) decls:ms) = (HsMatch l n ps (HsUnGuardedRhs (substHsExp x v rhs)) decls):subst' x v ms
-match [] ms = 
 match (x:xs) (HsMatch _ _ ps rhs _:ms) err = error ("local declarations not implemented yet (where)")
 match xs ms err = error ("unimplemented match: " ++ (show xs) ++ " --> " ++ (show ms))
 match xs ms err = EVar (mkName ("match " ++ (show xs) ++ " " ++ (show ms)))

@@ -1,7 +1,7 @@
 module Main where
 
-import List
-import System
+import Data.List
+import System.Environment
 import System.Exit
 import Language.Haskell.Pretty
 
